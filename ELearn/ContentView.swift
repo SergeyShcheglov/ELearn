@@ -15,7 +15,10 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 26, height: 26)
-                .cornerRadius(20)
+                .cornerRadius(10)
+                .padding(9)
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+                .strokeStyle(cornerRadius: 16)
             
             Text("SwiftUI for iOS 15")
                 .font(.largeTitle)
@@ -36,9 +39,11 @@ struct ContentView: View {
         }
         .padding(20)
         .frame(height: 350)
-        .background(.ultraThinMaterial)
-        .cornerRadius(30)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
+//        .cornerRadius(30)
+//        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
+        .strokeStyle()
         .padding(.horizontal, 20)
         .background(
             Image("Blob 1")
@@ -58,6 +63,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
+            ContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }
