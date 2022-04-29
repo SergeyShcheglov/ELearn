@@ -39,9 +39,10 @@ struct ContentView: View {
         }
         .padding(20)
         .frame(height: 350)
-        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 30, style: .continuous))
-//        .cornerRadius(30)
-//        .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+        .background(
+            .ultraThinMaterial,
+            in: RoundedRectangle(cornerRadius: 30, style: .continuous)
+        )
         .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
         .strokeStyle()
         .padding(.horizontal, 20)
