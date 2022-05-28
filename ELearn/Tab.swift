@@ -7,14 +7,24 @@
 
 import SwiftUI
 
-struct Tab: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct TabItem: Identifiable {
+    var id = UUID()
+    var text: String
+    var icon: String
+    var tab: Tab
+    var color: Color
 }
 
-struct Tab_Previews: PreviewProvider {
-    static var previews: some View {
-        Tab()
-    }
+var tabItems = [
+    TabItem(text: "Learn now", icon: "house", tab: .home, color: .teal),
+    TabItem(text: "Explore", icon: "magnifyingglass", tab: .explore, color: .blue),
+    TabItem(text: "Notifications", icon: "bell", tab: .notifications, color: .red),
+    TabItem(text: "Library", icon: "rectangle.stack", tab: .library, color: .pink)
+]
+
+enum Tab: String {
+    case home
+    case explore
+    case notifications
+    case library
 }
