@@ -7,14 +7,24 @@
 
 import SwiftUI
 
-struct AnimatableFontModifier: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct AnimatableFontModifier: AnimatableModifier {
+    var size: Double
+    var weight: Font.Weight = .regular
+    var design: Font.Design = .default
+    
+    var animatableData: Double {
+        get { size }
+        set { size = newValue }
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: size, weight: weight, design: design))
     }
 }
 
-struct AnimatableFontModifier_Previews: PreviewProvider {
-    static var previews: some View {
-        AnimatableFontModifier()
+extension View {
+    func animatableFont(size: Double, weight: Font.Weight = .regular, design: Font.Design = .default) -> some View {
+        self.modifier(AnimatableFontModifier(size: size, weight: weight, design: design))
     }
 }
