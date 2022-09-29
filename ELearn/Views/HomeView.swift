@@ -48,8 +48,25 @@ struct HomeView: View {
     
     var featured: some View {
         TabView {
-            ForEach(courses) { item in
-                FeaturedItem(course: item)
+            ForEach(courses) { course in
+                GeometryReader { proxy in
+                    let minX = proxy.frame(in: .global).minX
+                    
+                    FeaturedItem(course: course)
+                        .padding(.vertical, 40)
+                        .rotation3DEffect(.degrees(minX / -10), axis: (x: 0, y: 1, z: 0))
+                        .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
+                        .blur(radius: abs(minX / 40))
+                        .overlay(
+                            Image(course.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 230)
+                                .offset(x: 32, y: -80)
+                                .offset(x: minX / 2)
+                        )
+
+                }
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
